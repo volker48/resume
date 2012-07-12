@@ -1,0 +1,330 @@
+% LaTeX source of my resume
+% =========================
+
+% Commented for easy reuse... ;)
+
+% See the `README.md` file for more info.
+
+% This file is licensed under the CC-NC-ND Creative Commons license.
+
+
+% start a document with the here given default font size and paper size
+\documentclass[10pt,a4paper]{article}
+
+% include the `tex` instructions that takes care of loading packages and defining commands
+
+% Copyright (c) 2012 Cies Breijs
+%
+% The MIT License
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in
+% all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE.
+
+
+% Some commands for making a LaTeX resume
+% =======================================
+
+% Commented ;)
+
+% See the README.md file for more info
+
+
+
+% \documentclass[10pt,a4paper]{article}  % i do this in the document itself
+
+
+%%% LOAD AND SETUP PACKAGES
+
+\usepackage[a4paper,margin=0.75in]{geometry}
+\usepackage{mdwlist}   % to finetue lists with a inline heading and indented content (see Experiences)
+\usepackage{multicol}  % for multiple column text
+\usepackage{relsize}   % for \textscale, which I prefer over \sc (small caps), see my \acr command
+\usepackage[english]{babel}
+\hyphenation{Some-long-word}
+
+\usepackage[pdftex]{hyperref}  % yups, URLs everwhere...
+\usepackage{xcolor}  % ... and color them links
+\definecolor{dark-blue}{rgb}{0.15,0.15,0.4}
+\hypersetup{colorlinks,linkcolor={dark-blue},citecolor={dark-blue},urlcolor={dark-blue}}
+
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+  \setmainfont
+    [ ExternalLocation ,
+      Mapping          = tex-text ,
+      Numbers          = OldStyle ,
+      Ligatures        = {Common,Contextual} ,
+      BoldFont         = texgyrepagella-bold.otf ,
+      ItalicFont       = texgyrepagella-italic.otf ,
+      BoldItalicFont   = texgyrepagella-bolditalic.otf ]
+    {texgyrepagella-regular.otf}
+  % Comment out the previous statement and uncomment the following line to use the
+  % Linux Libertine font (it has nice lignatures).
+  % Make sure to have the `ttf-linux-libertine` package installed on Ubuntu.
+%  \setmainfont[Mapping=tex-text, Numbers=OldStyle, Ligatures={Common,Contextual}]{Linux Libertine O}
+\else
+  \usepackage{tgpagella}  % this case we lack lower case numbers, ligatures and some typographic niceties
+\fi
+
+
+
+%%% DOCUMENT WIDE STYLING
+
+\pagestyle{empty}
+\setlength{\tabcolsep}{0em}
+\xspaceskip7pt  % some more spacing between sentences (use "i.e.\ " or "with SQL\@. " in case of errors)
+
+
+%%% CUSTOM COMMANDS
+
+% main title (name) with subtitle (date)
+\newcommand*\maintitle[2]{\noindent{\LARGE \textbf{#1}}\ \ \ \emph{#2}}
+
+% title for the root sections (experience, education, etc) of the resume
+\newcommand*\roottitle[1]{\subsection*{#1}\vspace{-0.3em}\nopagebreak[4]}
+
+% acr command, to quickly mark acronyms for special formatting
+\newcommand*\acr[1]{\textscale{.85}{#1}}
+
+% pretty bullet (created from a much smaller centerdot), \sbull contains its spacing
+\newcommand*\bull{\raisebox{-0.365em}[-1em][-1em]{\textscale{4}{$\cdot$}}}
+\newcommand*\sbull{\ \ \bull \ \ }
+
+% it seems not to work when simply using \parindent...
+\newlength{\newparindent}
+\addtolength{\newparindent}{\parindent}
+
+% a double \parindent...
+\newlength{\doubleparindent}
+\addtolength{\doubleparindent}{\parindent}
+\addtolength{\doubleparindent}{\parindent}
+
+% indentsection style, used for sections that aren't already in lists
+% that need indentation to the level of all text in the document
+\newenvironment{indentsection}%
+{\begin{list}{}%
+  {\setlength{\leftmargin}{\newparindent}\setlength{\parsep}{0pt}\setlength{\parskip}{0pt}\setlength{\itemsep}{0pt}\setlength{\topsep}{0pt}}%
+}
+{\end{list}}
+
+% headerrow command, used for a new employer
+\newcommand{\headedsection}[3]{\nopagebreak[4]\begin{indentsection}\item[]\textscale{1.1}{#1}\hfill#2#3\end{indentsection}\nopagebreak[4]}
+
+% subheaderrow command, used for a new position
+\newcommand{\headedsubsection}[3]{\nopagebreak[4]\begin{indentsection}\item[]\textbf{#1}\hfill\emph{#2}#3\end{indentsection}\nopagebreak[4]}
+
+% body text (indented)
+\newcommand{\bodytext}[1]{\nopagebreak[4]\begin{indentsection}\item[]#1\end{indentsection}\pagebreak[2]}
+
+% \vspace variaties
+\newcommand{\breakvspace}[1]{\pagebreak[2]\vspace{#1}\pagebreak[2]}
+\newcommand{\nobreakvspace}[1]{\nopagebreak[4]\vspace{#1}\nopagebreak[4]}
+
+% \spacedhrule a horizontal line with some vertical space before and after it
+\newcommand{\spacedhrule}[2]{\breakvspace{#1}\hrule\nobreakvspace{#2}}
+
+% \inlineheadsection command, used for a new employer
+\newcommand{\inlineheadsection}[2]{\begin{basedescript}{\setlength{\leftmargin}{\doubleparindent}}\item[\hspace{\newparindent}\textbf{#1}]#2\end{basedescript}\vspace{-1.7em}}
+
+% apo command, for an apostrophe that looks good on old style nums
+\newcommand{\apo}{\raisebox{-.18ex}{'}{\hspace{-.1em}}}
+
+% non space that allows line breaks
+\newcommand*{\nsp}{\hskip0pt}
+
+%%% MORE SPECIFIC COMMANDS
+
+% CPP command (found it in some corner of the internet and decided to use it)
+\newcommand{\CPP}{C\nolinebreak[4]\hspace{-.04em}\raisebox{.20ex}{\footnotesize\bf++} }
+
+% KTurtle command :)
+\newcommand{\KTurtle}{\acr{KT}urtle }
+
+
+
+% % these are in the document itself:
+%
+% \begin{document}
+% ...the document text...
+% \end{document}
+
+
+
+\begin{document}  % begin the content of the document
+\sloppy  % this to relax whitespacing in favour of straight margins
+
+\maintitle{Marcus McCurdy}{}% title on top of the document
+
+\nobreakvspace{0.3em}  % add some page break averse vertical spacing
+
+% \noindent prevents paragraph's first lines from indenting
+% \mbox is used to obfuscate the email address
+% \sbull is a spaced bullet
+% \href well..
+% \\ breaks the line into a new paragraph
+\noindent\href{mailto:marcus.mccurdy@gmail.com}
+{marcus.mccurdy\mbox{}@\mbox{}gmail.com}\sbull
+\textsmaller{+1}714-791-8345\sbull
+\href{http://www.linkedin.com/in/marcusmccurdy}
+    {www.linkedin.com/in/marcusmccurdy}
+\href{http://github.com/volker48}{github.com/volker48}
+\\
+240 Montrose ST\sbull
+Philadelphia, PA 19147\sbull
+
+\spacedhrule{0.9em}{-0.4em}  % a horizontal line with some vertical spacing before and after
+
+%\roottitle{Summary}  % a root section title
+%
+%\vspace{-1.3em}  % some vertical spacing
+%\begin{multicols}{2}  % open a multicolumn environment
+%\noindent \emph{Creative geek with roots in the open source movement, an 
+%entrepreneurial mindset and a passion for user/customer centered software 
+%development with maintainable outcomes.}
+%\\
+%\\
+%At the age of seven (1989) I wrote my first lines of code in a 
+%\acr{LOGO}-like language on an \acr{MSX} (pre-\acr{PC}).  Two years later I 
+%attended a conference on an emerging new technology, the Internet, at the 
+%Erasmus University from which I would graduate 16 years later.
+%
+%After being introduced to the open source movement in 1997, I taught myself a 
+%variety of skills with help from the open source community.  Since 2002 I am 
+%a contributor to the \acr{KDE} project, as my pet project \KTurtle got 
+%admitted into their \emph{edu} module.
+%
+%\KTurtle is a zero-entry-barrier programming environment that is shipped 
+%with every Linux distribution.  It is well suited for teaching (children) the 
+%basics of programming, math and geometry.  Through this project I hope to 
+%give others the same opportunity I was given:\ to learn programming at early 
+%age.
+%
+%From 2003 to 2007 I studied at the Erasmus University Rotterdam and 
+%graduated in \emph{Business and Computer Science} (one curriculum).  After 
+%graduation I traveled Europe and Asia during a two year sabbatical, on which 
+%I worked on several occasions (see experience below).  Most challenging was 
+%my work for Intellecap:\ I architected and implemented an open source 
+%administrative backend for the booming micro credit lending industry.
+%
+%Upon return from my travels (\apo09) I joined Zarafa, one of the largest 
+%open source software vendors in the Netherlands.  In 2011 was asked to join 
+%Intellecap as the \acr{CTO} of their software division (\acr{ISTPL}) that 
+%within half a year had to let me go due to restructuring.  Currently I am 
+%looking for a challenging position further train my geek muscle.
+%\end{multicols}
+%
+%
+%\spacedhrule{0em}{-0.4em}
+%
+\roottitle{Experience}
+
+\headedsection  % sets the header for the section and includes any subsections
+  {\href{http://www.drexel.edu/}{Drexel University}}
+  {\textsc{Philadelphia, Pennsylvania}} {%
+
+  \headedsubsection  % sets the header for a subsection and contains usually body text
+    {Research Engineer}
+    {Jun\apo09 -- Present}
+    {\bodytext{Led a small team in the design and implementation of a 
+    distributed collaborative battle command planning system for the US army. 
+    Oversaw and mentored junior developers during the project while working
+    closely with the lead system integrator to deliver a premium product.}}
+ }
+
+\headedsection
+  {\href{http://www.navsea.navy.mil/nswc/porthueneme/}{NSWC PHD}}
+  {\textsc{Port Hueneme, California}} {%
+  \headedsubsection
+    {Combat System Engineer}
+    {Jul\apo07 -- Jun\apo09}
+    {\bodytext{Responsible for installation and configuration of remote 
+    assistance systems on US Navy cruisers and destroyers. Remote system saved
+    time and money by allowing shore based experts to provide remote support
+to sailors both at sea and when docked.}}
+}
+
+\headedsection
+  {\href{http://www.geeksquad.com/}{Geeksquad}}
+  {\textsc{Westminster, California}} {%
+  \headedsubsection
+  {\acr{IT} Consultant}
+    {Nov\apo09 -- Dec\apo09}
+    {\bodytext{One of the first agents when Best Buy acquired Geeksquad. Helped
+    roll-out processes and procedures to the entire company.}}
+}
+
+\begin{center}
+  \emph{Please refer to \href{http://www.linkedin.com/in/marcusmccurdy}{my Linkedin profile} for the complete list of work experiences.}
+\end{center}
+
+
+\spacedhrule{-0.2em}{-0.4em}
+
+\roottitle{Education}
+
+\headedsection
+  {Drexel University}
+  {\textsc{Philadelphia, Pennsylvania}} {%
+  \headedsubsection
+    {Masters degree in Computer Science}
+    {2009 -- 2012}
+    {\bodytext{Focused on Artificial Intelligence and data structures and
+    algorithms.}}
+}
+
+\headedsection
+  {California State University at Long Beach}
+  {\textsc{Long Beach, California}} {%
+  \headedsubsection
+    {Bachelor degree in Computer Engineering}
+    {2001 -- 2007} 
+    {\bodytext{}}
+}
+
+\spacedhrule{0.5em}{-0.4em}
+
+\roottitle{Skills}
+
+\inlineheadsection  % special section that has an inline header with a 'hanging' paragraph
+  {Technical specialties:}
+  {Software design and implementation, with(in) a team. 
+      I love Ruby/\nsp Python/\nsp Java/\nsp \CPP and flirt regularly with 
+      Haskell. Solid knowledge of web technologies:\ \acr{HTML+CSS}, \acr{XML}, 
+      \acr{RDF}, \acr{REST}, \acr{SOAP} and JavaScript (mainly jQuery). 
+      Linux administration skills:\ bash, Apache, My\acr{SQL}, 
+      Postgres\acr{SQL}, virtualization/cloud (Open\acr{VZ}, \acr{VM}ware, 
+      \acr{KVM}, Xen and \acr{EC}2), datacenter automation (Puppet and Chef), 
+  continuous integration (Hudson/Jenkins). Experienced with SCM including SVN,
+  git, and mercurial.}
+
+\inlineheadsection
+  {Natural languages:}
+  {English \emph{(native), German \emph{(limited)}.}}
+
+
+\spacedhrule{1.6em}{-0.4em}
+
+\roottitle{Interests}
+
+\inlineheadsection
+  {Non-exhaustive and in alphabetical order:}
+  {Biking, cooking, hiking, Olympic lifting, running}
+
+
+\end{document}
