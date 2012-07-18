@@ -190,44 +190,15 @@ Philadelphia, PA 19147\sbull
 
 \spacedhrule{0.9em}{-0.4em}  % a horizontal line with some vertical spacing before and after
 
+%Not currently using this section
 %\roottitle{Summary}  % a root section title
 %
 %\vspace{-1.3em}  % some vertical spacing
 %\begin{multicols}{2}  % open a multicolumn environment
-%\noindent \emph{Creative geek with roots in the open source movement, an 
-%entrepreneurial mindset and a passion for user/customer centered software 
-%development with maintainable outcomes.}
+%\noindent \emph{}
 %\\
 %\\
-%At the age of seven (1989) I wrote my first lines of code in a 
-%\acr{LOGO}-like language on an \acr{MSX} (pre-\acr{PC}).  Two years later I 
-%attended a conference on an emerging new technology, the Internet, at the 
-%Erasmus University from which I would graduate 16 years later.
-%
-%After being introduced to the open source movement in 1997, I taught myself a 
-%variety of skills with help from the open source community.  Since 2002 I am 
-%a contributor to the \acr{KDE} project, as my pet project \KTurtle got 
-%admitted into their \emph{edu} module.
-%
-%\KTurtle is a zero-entry-barrier programming environment that is shipped 
-%with every Linux distribution.  It is well suited for teaching (children) the 
-%basics of programming, math and geometry.  Through this project I hope to 
-%give others the same opportunity I was given:\ to learn programming at early 
-%age.
-%
-%From 2003 to 2007 I studied at the Erasmus University Rotterdam and 
-%graduated in \emph{Business and Computer Science} (one curriculum).  After 
-%graduation I traveled Europe and Asia during a two year sabbatical, on which 
-%I worked on several occasions (see experience below).  Most challenging was 
-%my work for Intellecap:\ I architected and implemented an open source 
-%administrative backend for the booming micro credit lending industry.
-%
-%Upon return from my travels (\apo09) I joined Zarafa, one of the largest 
-%open source software vendors in the Netherlands.  In 2011 was asked to join 
-%Intellecap as the \acr{CTO} of their software division (\acr{ISTPL}) that 
-%within half a year had to let me go due to restructuring.  Currently I am 
-%looking for a challenging position further train my geek muscle.
-%\end{multicols}
+%%\end{multicols}
 %
 %
 %\spacedhrule{0em}{-0.4em}
@@ -241,10 +212,25 @@ Philadelphia, PA 19147\sbull
   \headedsubsection  % sets the header for a subsection and contains usually body text
     {Research Engineer}
     {Jun\apo09 -- Present}
-    {\bodytext{Led a small team in the design and implementation of a 
+    {\bodytext{
+    \begin{itemize}
+        \item Performed background research and drafted a proposal for an 
+            internal R\&D online learning project focusing on integrating 
+            artificial intelligence into Drexel's online courses. Proposal after
+            research was approximately \$700,000 under initial estimates and 
+            was presented to the president of the university.
+        \item Technical lead on a US Army funded Android development project. 
+            Assessing the feasibility of and implementing agent based networking
+            applications. Also created scenarios for testing and evaluation of
+            networking protocols and performed the evaluations.
+        \item Team lead in the design and implementation of a 
     distributed collaborative battle command planning system for the US army. 
     Oversaw and mentored junior developers during the project while working
-    closely with the lead system integrator to deliver a premium product.}}
+    closely with the lead system integrator to deliver a premium product. 
+    Integrated the final product with systems from French and German allies. 
+    Extensive use of Swing and {NASA}'s {World Wind}.
+    \end{itemize}
+}}
  }
 
 \headedsection
@@ -253,10 +239,18 @@ Philadelphia, PA 19147\sbull
   \headedsubsection
     {Combat System Engineer}
     {Jul\apo07 -- Jun\apo09}
-    {\bodytext{Responsible for installation and configuration of remote 
+    {\bodytext{
+        \begin{itemize}
+            \item Responsible for installation and configuration of remote 
     assistance systems on US Navy cruisers and destroyers. Remote system saved
     time and money by allowing shore based experts to provide remote support
-to sailors both at sea and when docked.}}
+to sailors both at sea and when docked. Resulted in a dramatic cost savings and
+decreased the turn around time for repairs.
+            \item Communicated directly with System Test Officer ({STO}) to
+                ensure minimal or no down time while installing routers and 
+                software for remote support.
+        \end{itemize}
+}}
 }
 
 \headedsection
@@ -265,8 +259,14 @@ to sailors both at sea and when docked.}}
   \headedsubsection
   {\acr{IT} Consultant}
     {Nov\apo09 -- Dec\apo09}
-    {\bodytext{One of the first agents when Best Buy acquired Geeksquad. Helped
-    roll-out processes and procedures to the entire company.}}
+    {\bodytext{
+        \begin{itemize}
+    \item One of the first agents when Best Buy acquired Geeksquad. 
+    \item Pioneered and assisted in the roll-out of processes and procedures 
+        to the entire company.
+    \end{itemize}
+
+}}
 }
 
 \begin{center}
@@ -284,17 +284,16 @@ to sailors both at sea and when docked.}}
   \headedsubsection
     {Masters degree in Computer Science}
     {2009 -- 2012}
-    {\bodytext{Focused on Artificial Intelligence and data structures and
-    algorithms.}}
+    {\bodytext{Focused on Artificial Intelligence.}}
 }
 
 \headedsection
   {California State University at Long Beach}
   {\textsc{Long Beach, California}} {%
   \headedsubsection
-    {Bachelor degree in Computer Engineering}
+    {Bachelors degree in Computer Engineering}
     {2001 -- 2007} 
-    {\bodytext{}}
+    {\bodytext{Minor in Computer Science.}}
 }
 
 \spacedhrule{0.5em}{-0.4em}
@@ -303,15 +302,15 @@ to sailors both at sea and when docked.}}
 
 \inlineheadsection  % special section that has an inline header with a 'hanging' paragraph
   {Technical specialties:}
-  {Software design and implementation, with(in) a team. 
-      I love Ruby/\nsp Python/\nsp Java/\nsp \CPP and flirt regularly with 
-      Haskell. Solid knowledge of web technologies:\ \acr{HTML+CSS}, \acr{XML}, 
-      \acr{RDF}, \acr{REST}, \acr{SOAP} and JavaScript (mainly jQuery). 
-      Linux administration skills:\ bash, Apache, My\acr{SQL}, 
-      Postgres\acr{SQL}, virtualization/cloud (Open\acr{VZ}, \acr{VM}ware, 
-      \acr{KVM}, Xen and \acr{EC}2), datacenter automation (Puppet and Chef), 
-  continuous integration (Hudson/Jenkins). Experienced with SCM including SVN,
-  git, and mercurial.}
+  {I have a passion for programming and often program just for fun. I've written the
+  most code in Java followed by Python. While Python is currently my favorite
+  I try to remain language agnostic and thoroughly enjoy learning new
+  languages. I've also worked with both C and C++ including embedded programming
+  in C on the 8051 microcontroller. Experience with web 
+  technologies {HTML}, {CSS}, and {Javascript}. Extensive experience with
+  {XML} and {JAXB}. {SQL} and database implementation with {PostgreSQL}. 
+  Linux administration experience on my own personal machine and servers for 
+  side projects. I use Git and Mercurial daily and {SVN} weekly.}
 
 \inlineheadsection
   {Natural languages:}
@@ -324,7 +323,7 @@ to sailors both at sea and when docked.}}
 
 \inlineheadsection
   {Non-exhaustive and in alphabetical order:}
-  {Biking, cooking, hiking, Olympic lifting, running}
+  {Biking, cooking, Crossfit, gaming, hiking, Olympic lifting, programming, reading, running}
 
 
 \end{document}
