@@ -11,9 +11,12 @@
 % start a document with the here given default font size and paper size
 \documentclass[10pt,a4paper]{article}
 
-% include the `tex` instructions that takes care of loading packages and defining commands
-\include{resume-commands}
+\usepackage[a4paper,margin=0.75in]{geometry}
 
+\usepackage[english]{babel}
+\hyphenation{Some-long-word}
+
+\usepackage{resume}
 
 
 \begin{document}  % begin the content of the document
@@ -39,19 +42,27 @@ Philadelphia, PA 19147 \sbull \textsmaller{+1}714-791-8345
 
 \spacedhrule{0.9em}{-0.4em}  % a horizontal line with some vertical spacing before and after
 
-%Not currently using this section
-%\roottitle{Summary}  % a root section title
-%
-%\vspace{-1.3em}  % some vertical spacing
-%\begin{multicols}{2}  % open a multicolumn environment
-%\noindent \emph{}
-%\\
-%\\
-%%\end{multicols}
-%
-%
-%\spacedhrule{0em}{-0.4em}
-%
+\roottitle{Summary}  % a root section title
+
+\vspace{-1.3em}  % some vertical spacing
+\begin{multicols}{2}  % open a multicolumn environment
+\noindent \emph{Engineer at heart who has always loved 
+seeing the joy building something useful can bring to
+others}
+\\
+\\
+
+I don't really know how to summarize 30 years of life and over a decade of 
+work experience with a few meager sentences. I'm a passionate and pragmatic
+programmer who believes done is better than perfect while at the same time
+believing that software shouldn't be rushed. I enjoy writing correct code
+while maintaining a sense of urgency and momentum. I use testing to provide
+myself with a tight feedback loop and freedom to refactor without fear.
+\end{multicols}
+
+
+\spacedhrule{0em}{-0.4em}
+
 \roottitle{Experience}
 
 \headedsection  % sets the header for the section and includes any subsections
@@ -165,10 +176,10 @@ decreased the turn around time for repairs.
   {XML} and {JAXB}. Written the most {SQL} for {PostgreSQL} and setup several 
   {PostgreSQL} installs. Linux system administration experience on my 
   own personal machine and servers for side projects. I use {Git} and 
-  Mercurial daily and {SVN} weekly. I currently
-  use IntelliJ as my IDE, but have used Visual Studio for {C\#} and {C++}
-  development. I have also used {Netbeans} and {Eclipse} for Java development.
-  My editor of choice is Vim despite attempts to coerce me into using Emacs.}
+  Mercurial daily. I currently use IntelliJ as my IDE, but have used Visual 
+  Studio for {C\#} and {C++} development. I have also used {Netbeans} and 
+  {Eclipse} for Java development. My editor of choice is Vim despite 
+  attempts to coerce me into using Emacs.}
 
 \inlineheadsection
   {Natural languages:}
