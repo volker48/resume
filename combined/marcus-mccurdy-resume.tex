@@ -1,17 +1,4 @@
-% LaTeX source of my resume
-% =========================
-
-% Commented for easy reuse... ;)
-
-% See the `README.md` file for more info.
-
-% This file is licensed under the CC-NC-ND Creative Commons license.
-
-
-% start a document with the here given default font size and paper size
-\documentclass[10pt,a4paper]{article}
-
-% include the `tex` instructions that takes care of loading packages and defining commands
+% resume.sty
 
 % Copyright (c) 2012 Cies Breijs
 %
@@ -35,36 +22,45 @@
 % OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 % SOFTWARE.
 
+%
+% This style contains some commands for making a LaTeX resume
+%
+% Please refer to the README.md file for more info.
+%
+% This project is currently hosted at: https://github.com/cies/resume
+%
 
-% Some commands for making a LaTeX resume
-% =======================================
 
-% Commented ;)
-
-% See the README.md file for more info
-
-
-
-% \documentclass[10pt,a4paper]{article}  % i do this in the document itself
 
 
 %%% LOAD AND SETUP PACKAGES
 
-\usepackage[a4paper,margin=0.75in]{geometry}
-\usepackage{mdwlist}   % to finetue lists with a inline heading and indented content (see Experiences)
-\usepackage{multicol}  % for multiple column text
-\usepackage{relsize}   % for \textscale, which I prefer over \sc (small caps), see my \acr command
-\usepackage[english]{babel}
-\hyphenation{Some-long-word}
 
-\usepackage[pdftex]{hyperref}  % yups, URLs everwhere...
-\usepackage{xcolor}  % ... and color them links
+
+% To finetune lists with a inline heading and indented content.
+% See the Experiences section in the example.
+\usepackage{mdwlist}
+
+% For multiple column text.
+\usepackage{multicol}
+
+% For \textscale, which I prefer over \sc (small caps).
+% See the \acr command definition below.
+\usepackage{relsize}
+
+% Setup the hyperrefs witht he right color.
+\usepackage{hyperref}  
+\usepackage{xcolor}
 \definecolor{dark-blue}{rgb}{0.15,0.15,0.4}
 \hypersetup{colorlinks,linkcolor={dark-blue},citecolor={dark-blue},urlcolor={dark-blue}}
 
+% XeTeX specific stuff with fall-back.
 \usepackage{ifxetex}
 \ifxetex
+
   \usepackage{fontspec}
+  
+  % the main font, with all features on
   \setmainfont
     [ ExternalLocation ,
       Mapping          = tex-text ,
@@ -74,12 +70,35 @@
       ItalicFont       = texgyrepagella-italic.otf ,
       BoldItalicFont   = texgyrepagella-bolditalic.otf ]
     {texgyrepagella-regular.otf}
+    
+  % same like the main font, but without old-style nums
+  \newfontfamily\newnums
+    [ ExternalLocation ,
+      Mapping          = tex-text ,
+      Ligatures        = {Common,Contextual} ,
+      BoldFont         = texgyrepagella-bold.otf ,
+      ItalicFont       = texgyrepagella-italic.otf ,
+      BoldItalicFont   = texgyrepagella-bolditalic.otf ]
+    {texgyrepagella-regular.otf}
   % Comment out the previous statement and uncomment the following line to use the
   % Linux Libertine font (it has nice lignatures).
   % Make sure to have the `ttf-linux-libertine` package installed on Ubuntu.
 %  \setmainfont[Mapping=tex-text, Numbers=OldStyle, Ligatures={Common,Contextual}]{Linux Libertine O}
+
+  % needs an experimental and impossible to find package for xetex
+  \usepackage[protrusion]{microtype}
+
 \else
-  \usepackage{tgpagella}  % this case we lack lower case numbers, ligatures and some typographic niceties
+
+  % this case we likely use the `pdftex` back-end
+  % therefor we lack:
+  %  * lower case numbers,
+  %  * ligatures and
+  %  * some typographic niceties
+  % We do make use of the possibility to use `microtype`
+  \usepackage{tgpagella}
+  \usepackage[expansion,protrusion]{microtype}
+
 \fi
 
 
@@ -91,10 +110,11 @@
 \xspaceskip7pt  % some more spacing between sentences (use "i.e.\ " or "with SQL\@. " in case of errors)
 
 
+
 %%% CUSTOM COMMANDS
 
 % main title (name) with subtitle (date)
-\newcommand*\maintitle[2]{\noindent{\LARGE \textbf{#1}}\ \ \ \emph{#2}}
+\newcommand\maintitle[3]{\vbox to 0pt{\hfill\scriptsize\color{gray} #3}\vspace{-0.4em}\noindent{\LARGE \textbf{#1}}\ \ \ \emph{#2}}
 
 % title for the root sections (experience, education, etc) of the resume
 \newcommand*\roottitle[1]{\subsection*{#1}\vspace{-0.3em}\nopagebreak[4]}
@@ -148,22 +168,32 @@
 % non space that allows line breaks
 \newcommand*{\nsp}{\hskip0pt}
 
+
+
 %%% MORE SPECIFIC COMMANDS
 
 % CPP command (found it in some corner of the internet and decided to use it)
-\newcommand{\CPP}{C\nolinebreak[4]\hspace{-.04em}\raisebox{.20ex}{\footnotesize\bf++} }
+\newcommand{\CPP}{C\nolinebreak[4]\hspace{-.04em}\raisebox{.20ex}{\footnotesize\bf++}}
 
-% KTurtle command :)
-\newcommand{\KTurtle}{\acr{KT}urtle }
+% LaTeX source of my resume
+% =========================
+
+% Commented for easy reuse... ;)
+
+% See the `README.md` file for more info.
+
+% This file is licensed under the CC-NC-ND Creative Commons license.
 
 
+% start a document with the here given default font size and paper size
+\documentclass[10pt,a4paper]{article}
 
-% % these are in the document itself:
-%
-% \begin{document}
-% ...the document text...
-% \end{document}
+\usepackage[a4paper,margin=0.75in]{geometry}
 
+\usepackage[english]{babel}
+\hyphenation{Some-long-word}
+
+\usepackage{resume}
 
 
 \begin{document}  % begin the content of the document
@@ -180,30 +210,113 @@
 % \\ breaks the line into a new paragraph
 \noindent\href{mailto:marcus.mccurdy@gmail.com}
 {marcus.mccurdy\mbox{}@\mbox{}gmail.com}\sbull
-\textsmaller{+1}714-791-8345\sbull
+\href{http://github.com/volker48}{github.com/volker48} \sbull
 \href{http://www.linkedin.com/in/marcusmccurdy}
     {www.linkedin.com/in/marcusmccurdy}
-\href{http://github.com/volker48}{github.com/volker48}
 \\
-240 Montrose ST\sbull
-Philadelphia, PA 19147\sbull
+224 Virginia Ave\sbull
+Haddon Township, NJ 08108\sbull \textsmaller{+1}714-791-8345
 
 \spacedhrule{0.9em}{-0.4em}  % a horizontal line with some vertical spacing before and after
 
-%Not currently using this section
-%\roottitle{Summary}  % a root section title
-%
-%\vspace{-1.3em}  % some vertical spacing
-%\begin{multicols}{2}  % open a multicolumn environment
-%\noindent \emph{}
-%\\
-%\\
-%%\end{multicols}
-%
-%
-%\spacedhrule{0em}{-0.4em}
-%
+\roottitle{Summary}  % a root section title
+
+\vspace{-1.3em}  % some vertical spacing
+\begin{multicols}{2}  % open a multicolumn environment
+\noindent \emph{Engineer at heart who has always loved 
+seeing the joy building something useful can bring to
+others.}
+\\
+
+I'm a passionate and pragmatic programmer who believes done is better than 
+perfect while at the same time believing that software shouldn't be rushed. 
+I enjoy writing correct code while maintaining a sense of urgency and momentum. 
+I use testing to provide myself with a tight feedback loop and the freedom to 
+refactor without fear. I thrive working in an environment where I can  
+collaborate with other developers on different aspects of our project resulting
+in a cohesive business feature that brings value to the company.
+
+\end{multicols}
+
+
+\spacedhrule{0em}{-0.4em}
+
 \roottitle{Experience}
+
+\headedsection
+  {\href{http://www.50onred.com/}{50onRed}}
+  {\textsc{Philadelphia, Pennsylvania} } 
+  {%
+ 
+  \headedsubsection
+  {Lead Software Engineer}
+  {Sept\apo12 -- Present}
+  {\bodytext{
+      \begin{itemize}
+          \item Used PySpark to aggregate an analyze click and impression logs
+                stored on Amazon S3.
+          \item Provisioned and deployed an Apache Spark iPython notebook on 
+                an Amazon EMR cluster.
+          \item Lead developer on 50onRed's cross-browser JavaScript extension
+              platform. A Python Flask web.
+              app backed by a {MySQL} database and {SQLAlchemy} {ORM}. The
+              Flask app is served  by Gunicorn and proxied by NGINX.
+          \item Worked closely with operational analysts to provide custom
+              reporting on 50's internal {PHP} dashboard and {MySQL} database.
+          \item Updated a manual process of editing JavaScript in text fields
+              and transformed it into a single page {AngularJS} application 
+              providing a simple interface for creating ad units that are 
+              compiled into fully functioning JavaScript ad units.
+          \item Revolutionised 50's Python web scraping framework by rewriting
+              a synchronous process into an asynchronous job queue with 
+              \href{http://python-rq.org/}{RQ}.
+          \item Major contributor to 50's Java and Jetty based popup serving
+              daemon processing billions of requests daily.
+          \item Implemented a concurrent Java application to process and 
+              aggregate terabytes of {Akamai} log files daily and store them
+              in a {PostgreSQL} database.
+          \item Extensive {Amazon} {AWS} deployments and provisioning with
+              {Ansible}.
+          \item Installed and maintained a Sentry event logging 
+              server to track errors across Java, Python, PHP, and 
+              JavaScript code bases.
+      \end{itemize}
+
+    }
+  }
+  }
+\headedsection
+  {\href{https://github.com/volker48/}{Open Source Projects}}
+  {\textsc{Philadelphia, Pennsylvania} } 
+  {%
+ 
+  \headedsubsection
+  {Developer}
+  {Sept\apo12 -- Present}
+  {\bodytext{
+      \begin{itemize}
+          \item
+              \href{https://chrome.google.com/webstore/detail/doge-pricer/oeaopbebinckgcdbihhdamchalemolpm}{DogePricer}
+              a Chrome extension leveraging REST APIs to provide up to date
+              prices of a cryptographic currency. It also provides setting
+              custom price alerts and API polling frequency.
+          \item
+              \href{https://pypi.python.org/pypi/Flask-Mandrill/}{Flask-Mandrill}
+              is a Flask extension that reduces the boilerplate needed to send
+              email using Mandrill.
+          \item \href{http://hashcolor.com/}{HashColor} a simple Python Flask
+              web app that generates a unique hex color code for a given string. 
+              This unique color can be used to provide a background color based
+              on an application user's username or email address.
+          \item \href{http://markovnamer.herokuapp.com/}{Namgen} a Python Flask
+              app that utilizes NumPy and the NLTK names corpus to
+              probabilistically create realistic names.
+
+
+      \end{itemize}
+  }
+  }
+  }
 
 \headedsection  % sets the header for the section and includes any subsections
   {\href{http://www.drexel.edu/}{Drexel University}}
@@ -211,7 +324,7 @@ Philadelphia, PA 19147\sbull
 
   \headedsubsection  % sets the header for a subsection and contains usually body text
     {Research Engineer}
-    {Jun\apo09 -- Present}
+    {Apr\apo09 -- Sept\apo12}
     {\bodytext{
     \begin{itemize}
         \item Performed background research and drafted a proposal for an 
@@ -243,7 +356,7 @@ Philadelphia, PA 19147\sbull
   {\textsc{Port Hueneme, California}} {%
   \headedsubsection
     {Combat System Engineer}
-    {Jul\apo07 -- Jun\apo09}
+    {Jul\apo07 -- Apr\apo09}
     {\bodytext{
         \begin{itemize}
             \item Responsible for installation and configuration of remote 
@@ -263,7 +376,7 @@ decreased the turn around time for repairs.
   {\textsc{Westminster, California}} {%
   \headedsubsection
   {\acr{IT} Consultant}
-    {Nov\apo09 -- Dec\apo09}
+    {Aug\apo02 -- Jul\apo07}
     {\bodytext{
         \begin{itemize}
     \item One of the first agents when Best Buy acquired Geeksquad. 
@@ -274,9 +387,9 @@ decreased the turn around time for repairs.
 }}
 }
 
-\begin{center}
-  \emph{Please refer to \href{http://www.linkedin.com/in/marcusmccurdy}{my Linkedin profile} for the complete list of work experiences.}
-\end{center}
+%\begin{center}
+%  \emph{Please refer to \href{http://www.linkedin.com/in/marcusmccurdy}{my Linkedin profile} for the complete list of work experiences.}
+%\end{center}
 
 
 \spacedhrule{-0.2em}{-0.4em}
@@ -308,18 +421,18 @@ decreased the turn around time for repairs.
 \inlineheadsection  % special section that has an inline header with a 'hanging' paragraph
   {Technical specialties:}
   {I have a passion for programming and often program just for fun. I've written the
-  most code in Java followed by Python. While Python is currently my favorite
-  I try to remain language agnostic and thoroughly enjoy learning new
-  languages. I've also worked with both C and C++ including embedded programming
+  most code in Python, Java, PHP, and JavaScript. While Python is currently my 
+  favorite I try to remain language agnostic and thoroughly enjoy learning new
+  languages and I've dabbled in {Go} and {Ruby}. I've also worked with both C and C++ including embedded programming
   in C on the 8051 microcontroller. Experience with web 
-  technologies {HTML}, {CSS}, and {Javascript}. Extensive experience with
-  {XML} and {JAXB}. Written the most {SQL} {PostgreSQL} and setup several 
-  {PostgreSQL} installs. Linux system administration experience on my 
-  own personal machine and servers for side projects. I use {Git} and 
-  Mercurial daily and {SVN} weekly. I currently
-  use IntelliJ as my IDE, but have used Visual Studio for {C\#} and {C++}
-  development. I have also used {Netbeans} and {Eclipse} for Java development.
-  My editor of choice is Vim despite attempts to coerce me into using Emacs.}
+  technologies {HTML}, {CSS}, and {LESS}. Extensive experience with
+  {XML} and {JAXB}. Written the most {SQL} for both {MySQL} and {PostgreSQL} and
+  deployed both databases to {AWS} and {DigitalOcean}. Linux system
+  administration (mostly Ubuntu) on {AWS} and my own personal machine. 
+  I use {Git} and Mercurial daily. I currently use IntelliJ as my IDE, but have used Visual 
+  Studio for {C\#} and {C++} development. I have also used {Netbeans} and 
+  {Eclipse} for Java development. My editor of choice is Vim despite 
+  attempts to coerce me into using Emacs.}
 
 \inlineheadsection
   {Natural languages:}
@@ -332,7 +445,8 @@ decreased the turn around time for repairs.
 
 \inlineheadsection
   {Non-exhaustive and in alphabetical order:}
-  {Biking, cooking, Crossfit, gaming, hiking, Olympic lifting, programming, reading, running}
+  {Biking, cooking, cryptographic currencies, CrossFit, gaming, hiking, 
+  Olympic lifting, programming, reading, and running.}
 
 
 \end{document}

@@ -37,8 +37,8 @@
 \href{http://www.linkedin.com/in/marcusmccurdy}
     {www.linkedin.com/in/marcusmccurdy}
 \\
-240 Montrose ST\sbull
-Philadelphia, PA 19147 \sbull \textsmaller{+1}714-791-8345
+224 Virginia Ave\sbull
+Haddon Township, NJ 08108\sbull \textsmaller{+1}714-791-8345
 
 \spacedhrule{0.9em}{-0.4em}  % a horizontal line with some vertical spacing before and after
 
@@ -67,19 +67,68 @@ in a cohesive business feature that brings value to the company.
 \roottitle{Experience}
 
 \headedsection
-  {\href{http://www.50onred.com/}{50onRed}}
-  {\textsc{Philadelphia, Pennsylvania} } 
+  {\href{https://beaxy.com/}{Beaxy Digital Ltd.}}
+  {\textsc{Remote} } 
   {%
- 
-  \headedsubsection
-  {Lead Software Engineer}
-  {Sept\apo12 -- Present}
+   \headedsubsection
+  {Data Scientist}
+  {Dec\apo17 -- Present}
   {\bodytext{
       \begin{itemize}
+          \item Work directly with CEO and CTO to code blockchain proof of concept applications.
+          \item Architect scalable solutions to real time exchange transactions using NoSQL.
+          \item Research cryptocurrency code bases in consideration of addition as trading pairs on the exchange.
+      \end{itemize}
+    }
+  }
+  }
+
+
+\headedsection
+  {\href{http://www.red-spark.com/}{Red Spark}}
+  {\textsc{Philadelphia, Pennsylvania} } 
+  {%
+   \headedsubsection
+  {Lead Data Scientist}
+  {Feb\apo16 -- Present}
+  {\bodytext{
+      \begin{itemize}
+          \item Brought over a dozen different models into production.
+          \item Built a bid prediction model and increased profit on primary product by ~25\%. 
+          \item Managed two other data scientist direct reports.
+          \item Retreived, cleaned, and merged data from MySQL and User Voice and used the data for agglomerative
+          clustering using scikit-learn.
+          Analyzed 10 clusters for business importance and found a small cluster of customers generating the majority of profit.
+          \item Implemented XGBoost model loading and inference in pure Go for use in a near real time prediction
+          service making over 150k predictions per second with a round trip p95 latency of ~1.5 ms.
+          \item Used PySpark to select, clean, transform, and extract terabytes of click stream data for usage in ML
+          models.
+          \item Created a keyword suggestion API using approximate nearest neighbors (ANNOY) and a Sanic webserver exposing a REST 
+          prediction API.
+          \item Developed a Docker container for the data science team to standardize our environments.
+          \item Took an existing, unvalidated Vowpal Wabbit (VW) machine learning model and through feature engineering and
+                hyperparameter tuning reduced Mean Squared Error from over 200 to less than 0.3.
+          \item Developed, tested, and deployed a Vowpal Wabbit automatic model trainer. Pulls data from S3, trains
+                VW, uploads model to production.
+          \item Evaluated multiple machine learning models for revenue prediction testing models from Scikit-Learn
+                and others including XGBoost, LightGBM, and SparkML.
+      \end{itemize}
+
+    }
+  }
+  
+  \headedsubsection
+  {Software Engineer Manager}
+  {Sept\apo12 -- Feb\apo16}
+  {\bodytext{
+      \begin{itemize}
+          \item Developed an ETL system in Go that streams data from S3, parses it, uploads back into S3, then performs a
+                distributed RedShift load of the data.
+          \item Developed a logging platform using OpenResty, LuaJIT, logrotate, and S3.
+          \item Full stack development in Laravel developing 50's publisher dashboard.
           \item Lead developer on 50onRed's cross-browser JavaScript extension
-              platform. A Python Flask web
-              app backed by a {MySQL} database and {SQLAlchemy} {ORM}. The
-              Flask app is served  by Gunicorn and proxied by NGINX.
+              platform. A Python Flask web app backed by a {MySQL} database and {SQLAlchemy} {ORM}. The
+              Flask app is served by uWSGI and reverse proxied by NGINX.
           \item Worked closely with operational analysts to provide custom
               reporting on 50's internal {PHP} dashboard and {MySQL} database.
           \item Updated a manual process of editing JavaScript in text fields
@@ -89,7 +138,7 @@ in a cohesive business feature that brings value to the company.
           \item Revolutionised 50's Python web scraping framework by rewriting
               a synchronous process into an asynchronous job queue with 
               \href{http://python-rq.org/}{RQ}.
-          \item Major contributor to 50's Java and Jetty based popup serving
+          \item Major contributor to a Java and Jetty based popup serving
               daemon processing billions of requests daily.
           \item Implemented a concurrent Java application to process and 
               aggregate terabytes of {Akamai} log files daily and store them
@@ -102,38 +151,6 @@ in a cohesive business feature that brings value to the company.
       \end{itemize}
 
     }
-  }
-  }
-\headedsection
-  {\href{https://github.com/volker48/}{Open Source Projects}}
-  {\textsc{Philadelphia, Pennsylvania} } 
-  {%
- 
-  \headedsubsection
-  {Developer}
-  {Sept\apo12 -- Present}
-  {\bodytext{
-      \begin{itemize}
-          \item
-              \href{https://chrome.google.com/webstore/detail/doge-pricer/oeaopbebinckgcdbihhdamchalemolpm}{DogePricer}
-              a Chrome extension leveraging REST APIs to provide up to date
-              prices of a cryptographic currency. It also provides setting
-              custom price alerts and API polling frequency.
-          \item
-              \href{https://pypi.python.org/pypi/Flask-Mandrill/}{Flask-Mandrill}
-              is a Flask extension that reduces the boilerplate needed to send
-              email using Mandrill.
-          \item \href{http://hashcolor.com/}{HashColor} a simple Python Flask
-              web app that generates a unique hex color code for a given string. 
-              This unique color can be used to provide a background color based
-              on an application user's username or email address.
-          \item \href{http://markovnamer.herokuapp.com/}{Namgen} a Python Flask
-              app that utilizes NumPy and the NLTK names corpus to
-              probabilistically create realistic names.
-
-
-      \end{itemize}
-  }
   }
   }
 
@@ -170,41 +187,6 @@ in a cohesive business feature that brings value to the company.
 }}
  }
 
-\headedsection
-  {\href{http://www.navsea.navy.mil/nswc/porthueneme/}{NSWC PHD}}
-  {\textsc{Port Hueneme, California}} {%
-  \headedsubsection
-    {Combat System Engineer}
-    {Jul\apo07 -- Apr\apo09}
-    {\bodytext{
-        \begin{itemize}
-            \item Responsible for installation and configuration of remote 
-    assistance systems on US Navy cruisers and destroyers. Remote system saved
-    time and money by allowing shore based experts to provide remote support
-to sailors both at sea and when docked. Resulted in a dramatic cost savings and
-decreased the turn around time for repairs.
-            \item Communicated directly with System Test Officer ({STO}) to
-                ensure minimal or no down time while installing routers and 
-                software for remote support.
-        \end{itemize}
-}}
-}
-
-\headedsection
-  {\href{http://www.geeksquad.com/}{Geeksquad}}
-  {\textsc{Westminster, California}} {%
-  \headedsubsection
-  {\acr{IT} Consultant}
-    {Aug\apo02 -- Jul\apo07}
-    {\bodytext{
-        \begin{itemize}
-    \item One of the first agents when Best Buy acquired Geeksquad. 
-    \item Pioneered and assisted in the roll-out of processes and procedures 
-        to the entire company.
-    \end{itemize}
-
-}}
-}
 
 %\begin{center}
 %  \emph{Please refer to \href{http://www.linkedin.com/in/marcusmccurdy}{my Linkedin profile} for the complete list of work experiences.}
@@ -240,17 +222,16 @@ decreased the turn around time for repairs.
 \inlineheadsection  % special section that has an inline header with a 'hanging' paragraph
   {Technical specialties:}
   {I have a passion for programming and often program just for fun. I've written the
-  most code in Python, Java, PHP, and JavaScript. While Python is currently my 
-  favorite I try to remain language agnostic and thoroughly enjoy learning new
-  languages and I've dabbled in {Go} and {Ruby}. I've also worked with both C and C++ including embedded programming
-  in C on the 8051 microcontroller. Experience with web 
-  technologies {HTML}, {CSS}, and {LESS}. Extensive experience with
-  {XML} and {JAXB}. Written the most {SQL} for both {MySQL} and {PostgreSQL} and
+  most production code in Python, {Go}, Java, PHP, and JavaScript. I'm obsessed with Machine Learning.
+  I regularly enter ML contests on Kaggle and have success on NumerAI. While Python is currently my primary 
+  day to day language I try to remain language agnostic and thoroughly enjoy learning new
+  languages and I've dabbled in {Haskell}, {Clojure}, and {Ruby}. I've been using {Go} in production for performance critical and concurrent
+  applications. I've also worked with both C and C++ including embedded programming in C on the 8051 microcontroller. Experience with web 
+  technologies {HTML}, {CSS}, and {LESS}. Written the most {SQL} for both {MySQL} and {PostgreSQL} and
   deployed both databases to {AWS} and {DigitalOcean}. Linux system
   administration (mostly Ubuntu) on {AWS} and my own personal machine. 
   I use {Git} and Mercurial daily. I currently use IntelliJ as my IDE, but have used Visual 
-  Studio for {C\#} and {C++} development. I have also used {Netbeans} and 
-  {Eclipse} for Java development. My editor of choice is Vim despite 
+  Studio for {C\#} and {C++} development. My editor of choice is Vim despite 
   attempts to coerce me into using Emacs.}
 
 \inlineheadsection
@@ -264,7 +245,7 @@ decreased the turn around time for repairs.
 
 \inlineheadsection
   {Non-exhaustive and in alphabetical order:}
-  {Biking, cooking, cryptographic currencies, Crossfit, gaming, hiking, 
+  {Biking, cooking, cryptographic currencies, CrossFit, gaming, hiking, 
   Olympic lifting, programming, reading, and running.}
 
 
